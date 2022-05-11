@@ -1,0 +1,14 @@
+### GET /users/:id/reviews
+GET http://localhost:5000/hotels
+
+### GET /users/reviews
+GET http://localhost:5000/hotels
+
+### GET /hotels
+GET http://localhost:5000/hotels
+
+### GET /hotels/:id
+GET http://localhost:5000/hotels/3
+
+### GET /hotels/reviews
+GET http://localhost:5000/hotels/reviews
