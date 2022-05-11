@@ -1,5 +1,5 @@
 import express from 'express';
-import { index, show, update, destroy, store } from '../handlers/users.js';
+import { index, show, update, destroy, store } from '../handlers/hotels.js';
 
 const router = express.Router();
 

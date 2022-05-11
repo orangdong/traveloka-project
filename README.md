@@ -42,5 +42,23 @@ _Below is an example of how you can instruct your audience on installing and set
     ```
 
 6. Run the server
-
+    ```sh
+    npm run dev
+    ```
 ## API endpoints
+Base URL : http://localhost:5000
+
+### User
+| Endpoint | Description | Parameter | Method|
+| ------ | ------ | ------ | ------ |
+| [/users](http://localhost:5000/users) | Get All User | - | GET |
+Usage
+```sh
+curl -XGET 'http://localhost:5000/users'
+```
+Response
+```json
+{
+    "id": "ID"
+}
+```

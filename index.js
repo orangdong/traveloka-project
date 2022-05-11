@@ -4,6 +4,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import error from 'http-errors';
 import usersRoutes from './routes/users.js';
+import hotelsRoutes from './routes/hotels.js';
+import reviewsRoutes from './routes/reviews.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,7 +21,14 @@ app.get('/', async (req, res) => {
     message: 'Traveloka Hotel Ranking API',
   });
 });
+
+// User Routes
 app.use('/users', usersRoutes);
+// Hotel Routes
+app.use('/hotels', hotelsRoutes);
+// Review Routes
+app.use('/reviews', reviewsRoutes);
+
 
 app.use((req, res, next) => {
   next(error.NotFound());
