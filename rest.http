@@ -1,18 +1,14 @@
-http://localhost:5000/users/1
+### GET /users/:id/reviews
+GET http://localhost:5000/hotels
 
-###
-GET http://localhost:5000/users/8
+### GET /users/reviews
+GET http://localhost:5000/hotels
 
-###
-POST http://localhost:5000/users
-Content-Type: application/json
+### GET /hotels
+GET http://localhost:5000/hotels
 
-{
-    "name" : "Evan", 
-    "email": "evan@email.com",
-    "phone" : "92293201",
-    "image" : null
-}
+### GET /hotels/:id
+GET http://localhost:5000/hotels/3
 
-###
-DELETE http://localhost:5000/users/3
+### GET /hotels/reviews
+GET http://localhost:5000/hotels/reviews

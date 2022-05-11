@@ -1,8 +1,16 @@
+import pkg from '@prisma/client';
+const { PrismaClient } = pkg;
+
+const prisma = new PrismaClient();
+
 const index = async (req, res) => {
+
+    const hotels = await prisma.hotel.findMany();
+    
     return res.json({
         status: 'success',
         message: null,
-        data: "Hotel Index"
+        data: hotels
     });
 }
 
@@ -16,6 +24,12 @@ const store = async (req, res) => {
 const show = async (req, res) => {
     const id = req.params.id;
 
+    const hotel = await prisma.hotel.findUnique({
+        where:{
+            id: Number(id)
+        }
+    });
+
     if(!id || !Number.isInteger(parseInt(id))) { 
         return res.status(400).json({
             status: 'error',
@@ -25,7 +39,8 @@ const show = async (req, res) => {
 
     return res.json({
         status: 'success',
-        message: `Show Route id: ${id}`
+        message: `Show Route id: ${id}`,
+        data: hotel
     });
 }
 
