@@ -1,0 +1,18 @@
+http://localhost:5000/users/1
+
+###
+GET http://localhost:5000/users/8
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name" : "Evan", 
+    "email": "evan@email.com",
+    "phone" : "92293201",
+    "image" : null
+}
+
+###
+DELETE http://localhost:5000/users/3
