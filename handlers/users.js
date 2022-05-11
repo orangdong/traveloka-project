@@ -62,9 +62,26 @@ const destroy = async (req, res) => {
         })
     }
 
+    const user = await prisma.user.findUnique({
+        where: {
+          id: id,
+        },
+    })
+
+    if(!user) { 
+        return res.status(404).json({
+            status: 'error',
+            message: 'User not found'
+        })
+    }
+
+    await prisma.user.delete({
+        where: { id: 1 },
+    })
+
     return res.json({
         status: 'success',
-        message: `Delete Route id: ${id}`
+        message: `user deleted`
     });
 }
 
