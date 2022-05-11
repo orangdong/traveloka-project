@@ -30,9 +30,23 @@ const show = async (req, res) => {
         })
     }
 
+    const user = await prisma.user.findUnique({
+        where: {
+          id: id,
+        },
+    })
+
+    if(!user) { 
+        return res.status(404).json({
+            status: 'error',
+            message: 'User not found'
+        })
+    }
+
     return res.json({
         status: 'success',
-        message: `Show Route id: ${id}`
+        message: null,
+        data: user
     });
 }
 
