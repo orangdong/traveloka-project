@@ -14,13 +14,6 @@ const index = async (req, res) => {
     });
 }
 
-const store = async (req, res) => {
-    return res.json({
-        status: 'success',
-        message: 'Post routes'
-    })
-}
-
 const show = async (req, res) => {
     const id = req.params.id;
 
@@ -44,22 +37,6 @@ const show = async (req, res) => {
     });
 }
 
-const update = async (req, res) => {
-    const id = req.params.id;
-
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
-
-    return res.json({
-        status: 'success',
-        message: `Update Route id: ${id}`
-    });
-}
-
 const destroy = async (req, res) => {
     const id = req.params.id;
 
@@ -75,6 +52,20 @@ const destroy = async (req, res) => {
         message: `Delete Route id: ${id}`
     });
 }
+
+const indexReviews = async (req,res) =>{
+
+    const hotelsReview = await prisma.hotel.findMany({
+        include:{reviews:true}
+    });
+
+    return res.json({
+        status: 'success',
+        message: 'success get review',
+        data: hotelsReview
+    });
+}
+
 
 const hotelReview = async (req,res) =>{
     const id = req.params.id;
@@ -100,4 +91,4 @@ const hotelReview = async (req,res) =>{
     });
 }
 
-export { index, show, update, destroy, store, hotelReview };
+export { index, show, update, destroy, store, hotelReview, indexReviews };

@@ -1,8 +1,8 @@
 ### GET /users/:id/reviews
-GET http://localhost:5000/hotels
+GET http://localhost:5000/users/5/reviews
 
 ### GET /users/reviews
-GET http://localhost:5000/hotels
+GET http://localhost:5000/users/reviews
 
 ### GET /hotels
 GET http://localhost:5000/hotels
