@@ -66,4 +66,29 @@ const indexReviews = async (req,res) =>{
     });
 }
 
-export { index, show, update, destroy, store, indexReviews };
+
+const hotelReview = async (req,res) =>{
+    const id = req.params.id;
+    if(!id || !Number.isInteger(parseInt(id))) { 
+        return res.status(400).json({
+            status: 'error',
+            message: 'Invalid id parameter'
+        })
+    }
+
+    const hotelReview = await prisma.review.findMany({
+        where: {
+            hotel_id: {
+                equals: parseInt(id)
+            }
+        }
+    });
+
+    return res.json({
+        status: 'success',
+        message: 'success get review',
+        data: hotelReview
+    });
+}
+
+export { index, show, update, destroy, store, hotelReview, indexReviews };
