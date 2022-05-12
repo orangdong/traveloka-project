@@ -76,4 +76,17 @@ const destroy = async (req, res) => {
     });
 }
 
-export { index, show, update, destroy, store };
+const indexReviews = async (req,res) =>{
+
+    const hotelsReview = await prisma.hotel.findMany({
+        include:{reviews:true}
+    });
+
+    return res.json({
+        status: 'success',
+        message: 'success get review',
+        data: hotelsReview
+    });
+}
+
+export { index, show, update, destroy, store, indexReviews };

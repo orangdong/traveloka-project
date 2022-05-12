@@ -99,4 +99,35 @@ const destroy = async (req, res) => {
     });
 }
 
-export { index, show, update, destroy, store };
+const indexReviews = async (req,res) =>{
+
+    const usersReview = await prisma.user.findMany({
+        include:{reviews:true}
+    });
+
+    return res.json({
+        status: 'success',
+        message: 'success get review',
+        data: usersReview
+    });
+}
+
+const showReviews = async (req,res) =>{
+
+    const id = req.params.id;
+
+    const usersReview = await prisma.user.findMany({
+        where:{
+            id: Number(id)
+        },
+        include:{reviews:true}
+    });
+
+    return res.json({
+        status: 'success',
+        message: 'success get review',
+        data: usersReview
+    });
+}
+
+export { index, show, update, destroy, store, indexReviews, showReviews };
