@@ -44,7 +44,22 @@ const main = async () => {
             email: 'johnbob@email.com'
         },
     })
-
+    const hotel1 = await prisma.hotel.create({
+        data: {
+            name: 'InterContinental Hotel Dago Pakar Bandung',
+            address: 'Jalan Resor Dago Pakar Raya 2B Resor Dago Pakar, Mekarsaluyu, Kec. Cimenyan, Kota Bandung, Jawa Barat 40198, Indonesia',
+            image: 'https://ak-d.tripcdn.com/images/220r0u000000j8qbf8514_Z_1080_808_R5_D.jpg',
+            description: 'Hotel Bintang 5 di Bandung'
+        },
+    })
+    const review1 = await prisma.review.create({
+        data: {
+            user_id: user1.id,
+            hotel_id:  hotel1.id,
+            rating: 1,
+            comment: 'Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.'
+        },
+    })
     console.log({ user1, user2, user3, user4, user5 });
 }
 
