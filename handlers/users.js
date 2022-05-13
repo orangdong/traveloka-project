@@ -14,14 +14,44 @@ const index = async (req, res) => {
 }
 
 const store = async (req, res) => {
+    const {name, email, phone} = req.body;
+
+    if(!name || !email || !phone) {
+        return res.status(400).json({
+            status: 'error',
+            message: 'Missing required fields'
+        })
+    }
+
+    const isUserExist = await prisma.user.findUnique({
+        where: { email: req.body.email }
+    });
+
+    if(isUserExist){
+        return res.status(400).json({
+            status: 'error',
+            message: 'User already exists'
+        });
+    }
+
+    const user = await prisma.user.create({
+        data: {
+            name,
+            email,
+            phone
+        }
+    })
+
+
     return res.json({
         status: 'success',
-        message: 'Post routes'
+        message: 'User created',
+        data: user
     })
 }
 
 const show = async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     if(!id || !Number.isInteger(parseInt(id))) { 
         return res.status(400).json({
@@ -51,7 +81,7 @@ const show = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     if(!id || !Number.isInteger(parseInt(id))) { 
         return res.status(400).json({
@@ -60,14 +90,51 @@ const update = async (req, res) => {
         })
     }
 
+    const user = await prisma.user.findUnique({
+        where: { id }
+    });
+
+    if(!user){
+        return res.status(404).json({
+            status: 'error',
+            message: 'User not found'
+        });
+    }
+
+    if(req.body.email){
+        const checkEmail = await prisma.user.findUnique({
+            where: { email: req.body.email }
+        });
+
+        if(checkEmail && req.body.email !== user.email) {
+            return res.status(409).json({
+                status: 'error',
+                message: 'email already exist'
+            });
+        }
+    }
+
+    const updatedUser = await prisma.user.update({
+        where: {
+            id
+        },
+        data: {
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            image: req.body.image
+        }
+    });
+
     return res.json({
         status: 'success',
-        message: `Update Route id: ${id}`
+        message: `user updated`,
+        data: updatedUser
     });
 }
 
 const destroy = async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     if(!id || !Number.isInteger(parseInt(id))) { 
         return res.status(400).json({

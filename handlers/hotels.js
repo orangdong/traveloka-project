@@ -91,4 +91,4 @@ const hotelReview = async (req,res) =>{
     });
 }
 
-export { index, show, update, destroy, store, hotelReview, indexReviews };
+export { index, show, destroy, hotelReview, indexReviews };

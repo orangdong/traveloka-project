@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { index, show, update, destroy, store, hotelReview, indexReview } from '../handlers/hotels.js';
+import { index, show, hotelReview, indexReviews } from '../handlers/hotels.js';
 
 const router = express.Router();
 
