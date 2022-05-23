@@ -24,12 +24,51 @@ model User {
 
 model Hotel {
   @@map("hotels")
-  id          Int @id @default(autoincrement())
+  id          String @id 
   name        String
   address     String @db.Text
+  city        String
+  state       String
+  country     String
+  latitude    Float
+  longitude   Float
+  type        String
   image       String? @db.Text
   description String @db.Text
   reviews     Review[]
+  hotel_facilities     HotelFacility[]
+  point_of_interests    PointOfInterest[]
+  room_facilities       RoomFacility[]
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model PointOfInterest {
+  @@map("point_of_interests")
+  id          Int @id @default(autoincrement()) 
+  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel_id    String
+  interest    String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model RoomFacility {
+  @@map("room_facilities")
+  id          Int @id @default(autoincrement())
+  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel_id    String
+  facility    String
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model HotelFacility {
+  @@map("hotel_facilities")
+  id          Int @id @default(autoincrement())
+  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel_id    String
+  facility    String
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
 }
@@ -40,7 +79,7 @@ model Review {
   user        User @relation(fields: [user_id], references: [id])
   user_id      Int 
   hotel       Hotel @relation(fields: [hotel_id], references: [id])
-  hotel_id     Int
+  hotel_id     String
   rating      Int @default(1)
   comment     String? @db.Text
   created_at   DateTime @default(now())
