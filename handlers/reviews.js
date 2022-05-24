@@ -38,7 +38,7 @@ const show = async (req, res) => {
 
     return res.json({
         status: 'success',
-        message: null,
+        message: `Show Route id: ${id}`,
         data: review
     });
 }
