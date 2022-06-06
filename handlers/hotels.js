@@ -19,16 +19,9 @@ const show = async (req, res) => {
 
     const hotel = await prisma.hotel.findUnique({
         where:{
-            id: Number(id)
+            id
         }
     });
-
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
 
     return res.json({
         status: 'success',
@@ -39,13 +32,6 @@ const show = async (req, res) => {
 
 const destroy = async (req, res) => {
     const id = req.params.id;
-
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
 
     return res.json({
         status: 'success',
@@ -69,17 +55,11 @@ const indexReviews = async (req,res) =>{
 
 const hotelReview = async (req,res) =>{
     const id = req.params.id;
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
 
     const hotelReview = await prisma.review.findMany({
         where: {
             hotel_id: {
-                equals: parseInt(id)
+                equals: id
             }
         }
     });

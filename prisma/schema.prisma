@@ -12,11 +12,11 @@ datasource db {
 
 model User {
   @@map("users")
-  id          Int @id @default(autoincrement())
+  id          String @id @default(cuid())
   name        String
-  email       String @unique
-  phone       String?
-  image       String? @db.Text
+  username    String @unique
+  city        String
+  state       String
   reviews     Review[]
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
@@ -24,7 +24,7 @@ model User {
 
 model Hotel {
   @@map("hotels")
-  id          String @id 
+  id          String @id @default(cuid())
   name        String
   address     String @db.Text
   city        String
@@ -46,7 +46,7 @@ model Hotel {
 model PointOfInterest {
   @@map("point_of_interests")
   id          Int @id @default(autoincrement()) 
-  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   interest    String
   created_at   DateTime @default(now())
@@ -56,7 +56,7 @@ model PointOfInterest {
 model RoomFacility {
   @@map("room_facilities")
   id          Int @id @default(autoincrement())
-  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   facility    String
   created_at   DateTime @default(now())
@@ -66,7 +66,7 @@ model RoomFacility {
 model HotelFacility {
   @@map("hotel_facilities")
   id          Int @id @default(autoincrement())
-  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   facility    String
   created_at   DateTime @default(now())
@@ -75,10 +75,10 @@ model HotelFacility {
 
 model Review {
   @@map("reviews")
-  id          Int @id @default(autoincrement())
-  user        User @relation(fields: [user_id], references: [id])
-  user_id      Int 
-  hotel       Hotel @relation(fields: [hotel_id], references: [id])
+  id          String @id @default(cuid())
+  user        User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id      String
+  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id     String
   rating      Int @default(1)
   comment     String? @db.Text

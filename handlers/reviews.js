@@ -16,16 +16,9 @@ const index = async (req, res) => {
 const show = async (req, res) => {
     const id = req.params.id;
 
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
-
     const review = await prisma.review.findUnique({
         where: {
-          id: parseInt(id),
+          id
         },
     })
 
@@ -72,17 +65,10 @@ const store = async (req, res) => {
 
 const update = async (req, res) => {
     const id = req.params.id;
-
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
     
     const review = await prisma.review.findUnique({
         where: {
-          id: parseInt(id),
+          id
         },
     })
 
@@ -103,7 +89,7 @@ const update = async (req, res) => {
 
     const updatedReview = await prisma.user.update({
         where: {
-            id: parseInt(id),
+            id
         },
         data: {
             rating: rating,
@@ -120,16 +106,10 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
     const id = req.params.id;
-    if(!id || !Number.isInteger(parseInt(id))) { 
-        return res.status(400).json({
-            status: 'error',
-            message: 'Invalid id parameter'
-        })
-    }
 
     const review = await prisma.review.findUnique({
         where: {
-          id: parseInt(id),
+          id
         },
     })
 
@@ -141,7 +121,7 @@ const destroy = async (req, res) => {
     }
 
     await prisma.user.delete({
-        where: { id: parseInt(id) },
+        where: { id },
     })
 
     return res.json({
