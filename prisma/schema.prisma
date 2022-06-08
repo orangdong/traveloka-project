@@ -33,8 +33,8 @@ model Hotel {
   type        String
   image       String? @db.Text
   description String @db.Text
-  reviews     Review[]
-  hotel_facilities     HotelFacility[]
+  reviews               Review[]
+  hotel_facilities      HotelFacility[]
   point_of_interests    PointOfInterest[]
   room_facilities       RoomFacility[]
 }
@@ -65,13 +65,13 @@ model HotelFacility {
 
 model Review {
   @@map("reviews")
-  id          String @id @default(cuid())
-  user        User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  id           String @id @default(cuid())
+  user         User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id      String
-  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
+  hotel        Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id     String
-  rating      Int @default(1)
-  comment     String? @db.Text
+  rating       Int @default(1)
+  comment      String? @db.Text
 
   @@unique([hotel_id, user_id])
 }

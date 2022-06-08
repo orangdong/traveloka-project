@@ -266,6 +266,7 @@ Response
 | Endpoint | Description | Parameter | Method|
 | ------ | ------ | ------ | ------ |
 | [/hotels](http://localhost:5000/hotels) | Get All Hotels | - | GET |
+| [/hotels?limit=1&offset=1](http://localhost:5000/hotels) | Get All Hotels with offset and limit | offset, limit | GET |
 | [/hotels/:id](http://localhost:5000/hotels/1) | Get Hotel by Id | id | GET |
 | [/hotels/:id/reviews](http://localhost:5000/hotels/1/reviews) | Get All Reviews by Spesific Hotel Id | id | GET |
 | [/hotels/reviews](http://localhost:5000/hotels/reviews) | Get All Hotels and Reviews | - | GET |

@@ -4,8 +4,16 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
 const index = async (req, res) => {
-
-    const hotels = await prisma.hotel.findMany();
+    
+    const hotels = await prisma.hotel.findMany({
+        skip: Number(req.query.offset),
+        take: Number(req.query.limit),
+        include: {
+            hotel_facilities: true,
+            point_of_interests: true,
+            room_facilities: true,
+        },
+    });
     
     return res.json({
         status: 'success',
@@ -20,7 +28,11 @@ const show = async (req, res) => {
     const hotel = await prisma.hotel.findUnique({
         where:{
             id
-        }
+        },include: {
+          hotel_facilities: true,
+          point_of_interests: true,
+          room_facilities: true,
+        },
     });
 
     return res.json({
