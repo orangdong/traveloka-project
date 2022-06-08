@@ -18,8 +18,8 @@ model User {
   city        String
   state       String
   reviews     Review[]
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String?
+  updated_at   String?
 }
 
 model Hotel {
@@ -39,8 +39,8 @@ model Hotel {
   hotel_facilities     HotelFacility[]
   point_of_interests    PointOfInterest[]
   room_facilities       RoomFacility[]
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String? 
+  updated_at   String?
 }
 
 model PointOfInterest {
@@ -49,8 +49,8 @@ model PointOfInterest {
   hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   interest    String
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String? 
+  updated_at   String? 
 }
 
 model RoomFacility {
@@ -59,8 +59,8 @@ model RoomFacility {
   hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   facility    String
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String? 
+  updated_at   String? 
 }
 
 model HotelFacility {
@@ -69,8 +69,8 @@ model HotelFacility {
   hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   hotel_id    String
   facility    String
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String? 
+  updated_at   String? 
 }
 
 model Review {
@@ -82,8 +82,8 @@ model Review {
   hotel_id     String
   rating      Int @default(1)
   comment     String? @db.Text
-  created_at   String? @default(now())
-  updated_at   String? @updatedAt
+  created_at   String?
+  updated_at   String? 
 
   @@unique([hotel_id, user_id])
 }
