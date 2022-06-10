@@ -1,20 +1,33 @@
 import pkg from '@prisma/client';
+import e from 'express';
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
 
 const index = async (req, res) => {
-    
-    const hotels = await prisma.hotel.findMany({
-        skip: Number(req.query.offset),
-        take: Number(req.query.limit),
-        include: {
-            hotel_facilities: true,
-            point_of_interests: true,
-            room_facilities: true,
-        },
-    });
-    
+    var hotels
+    if (!req.query.offset || !req.query.limit){
+        hotels = await prisma.hotel.findMany({
+            include: {
+                hotel_facilities: true,
+                point_of_interests: true,
+                room_facilities: true,
+            },
+        });
+        
+
+    }else{
+        hotels = await prisma.hotel.findMany({
+            skip: Number(req.query.offset),
+            take: Number(req.query.limit),
+            include: {
+                hotel_facilities: true,
+                point_of_interests: true,
+                room_facilities: true,
+            },
+        });
+        
+    }
     return res.json({
         status: 'success',
         message: null,
