@@ -8,7 +8,7 @@ schemes:
 produces:
   - application/json
 security:
-  - api_key: []
+  - firebase: []
 paths:
   /:
     get:
@@ -185,7 +185,7 @@ paths:
       operationId: traveloka-getHotelReviewsByIdHotel
       x-google-backend:
         address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
-        path_translation: APPEND_PATH_TO_ADDRESS\
+        path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
           in: "path"
@@ -274,10 +274,13 @@ paths:
         "404":
           description: "Review not found"
 securityDefinitions:
-  api_key:
-    type: "apiKey"
-    name: "key"
-    in: "query"
+  firebase:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "https://securetoken.google.com/traveloka-hotel-opt"
+    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+    x-google-audiences: "traveloka-hotel-opt"
 definitions:
   User:
     type: "object"
