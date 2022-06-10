@@ -7,6 +7,8 @@ schemes:
   - https
 produces:
   - application/json
+security:
+  - api_key: []
 paths:
   /:
     get:
@@ -19,38 +21,39 @@ paths:
           description: OK
   /users:
     get:
+      tags:
+        - "User"
       summary: Traveloka Hotel Ranking Get all Users
       operationId: traveloka-getAllUsers
       x-google-backend:
         address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users
-      security:
-        - api_key: []
       responses:
         "200":
           description: OK
     post:
+      tags:
+        - "User"
       summary: Traveloka Hotel Ranking Add new user
       operationId: "addUser"
-      parameters:
-        - in: "body"
-          name: "body"
-          required: true
-          schema:
-            $ref: "#/definitions/User"
       responses:
+        "200":
+          description: OK
         "400":
           description: "Missing required fields"
   /users/{id}:
     get:
+      tags:
+        - "User"
       summary: Traveloka Hotel Ranking Get all Users
       operationId: traveloka-getUser
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users/{id}
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
           in: "path"
           required: true
-          type: "integer"
+          type: "string"
           maximum: 10.0
           minimum: 1.0
           format: "int64"
@@ -64,36 +67,212 @@ paths:
         "404":
           description: "User not found"
     put:
+      tags:
+        - "User"
       summary: Traveloka Hotel Ranking Update User
-      operationId: "updateUser"
+      operationId: "traveloka-updateUser"
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
           in: "path"
           required: true
-          type: "integer"
+          type: "string"
         - in: "body"
           name: "body"
           required: true
           schema:
             $ref: "#/definitions/User"
       responses:
+        "200":
+          description: OK
         "400":
-          description: "Invalid user supplied"
+          description: "Invalid user validation"
         "404":
           description: "User not found"
     delete:
+      tags:
+        - "User"
       summary: Traveloka Hotel Ranking Delete User
-      operationId: "deleteUser"
+      operationId: "traveloka-deleteUser"
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
           in: "path"
           required: true
-          type: "integer"
+          type: "string"
       responses:
+        "200":
+          description: OK
         "400":
           description: "Invalid ID User"
         "404":
           description: "User not found"
+  /users/reviews:
+    get:
+      tags:
+        - "User"
+      summary: Traveloka Hotel Ranking Get all Users Reviews
+      operationId: traveloka-getAllReviewsUsers
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users/reviews
+      responses:
+        "200":
+          description: OK
+  /users/{id}/reviews:
+    get:
+      tags:
+        - "User"
+      summary: Traveloka Hotel Ranking Get User Review by user ID
+      operationId: traveloka-getAllReviewByUserId
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users/reviews
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: "Invalid ID User"
+        "404":
+          description: "User not found"
+  /hotels:
+    get:
+      tags:
+        - "Hotel"
+      summary: Traveloka Hotel Ranking Get all Hotels
+      operationId: traveloka-getAllHotels
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/hotels
+      responses:
+        "200":
+          description: OK
+  /hotels/{id}:
+    get:
+      tags:
+        - "Hotel"
+      summary: Traveloka Hotel Ranking Get Hotel by ID
+      operationId: traveloka-getHotelById
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/Hotel"
+        "400":
+          description: "Invalid ID Hotel"
+        "404":
+          description: "Hotel not found"
+  /hotels/{id}/reviews:
+    get:
+      tags:
+        - "Hotel"
+      summary: Traveloka Hotel Ranking Get Hotel Review by ID Hotel
+      operationId: traveloka-getHotelReviewsByIdHotel
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS\
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: "Invalid ID Hotel"
+        "404":
+          description: "Hotel not found"
+  /hotels/reviews:
+    get:
+      tags:
+        - "Hotel"
+      summary: Traveloka Hotel Ranking Get All Hotels and Reviews
+      operationId: traveloka-getAllHotelsAndReviews
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/hotels/reviews
+      responses:
+        "200":
+          description: OK
+  /reviews:
+    post:
+      tags:
+        - "Review"
+      summary: Traveloka Hotel Ranking Add new Review
+      operationId: traveloka-addNewReview
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: "Missing required fields"
+    get:
+      tags:
+        - "Review"
+      summary: Traveloka Hotel Ranking Get All Reviews
+      operationId: traveloka-getAllReviews
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/reviews
+      responses:
+        "200":
+          description: OK
+  /reviews/{id}:
+    get:
+      tags:
+        - "Review"
+      summary: Traveloka Hotel Ranking Get Review by ID
+      operationId: traveloka-getReviewById
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/Review"
+        "400":
+          description: "Invalid ID Review"
+        "404":
+          description: "Review not found"
+    delete:
+      tags:
+        - "Review"
+      summary: Traveloka Hotel Ranking Delete User
+      operationId: "traveloka-deleteReview"
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        path_translation: APPEND_PATH_TO_ADDRESS
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: "Invalid ID Review"
+        "404":
+          description: "Review not found"
 securityDefinitions:
   api_key:
     type: "apiKey"
@@ -111,3 +290,25 @@ definitions:
         type: "string"
     xml:
       name: "User"
+  Hotel:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      addres:
+        type: "string"
+      image:
+        type: "string"
+      description:
+        type: "string"
+    xml:
+      name: "Hotel"
+  Review:
+    type: "object"
+    properties:
+      rating:
+        type: "string"
+      comment:
+        type: "string"
+    xml:
+      name: "Review"
