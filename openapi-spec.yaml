@@ -1,0 +1,113 @@
+swagger: "2.0"
+info:
+  title: traveloka-cloud-run
+  description: Traveloka Cloud Run API Gateway
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      summary: Traveloka Hotel Ranking API
+      operationId: traveloka-home
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+      responses:
+        "200":
+          description: OK
+  /users:
+    get:
+      summary: Traveloka Hotel Ranking Get all Users
+      operationId: traveloka-getAllUsers
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users
+      security:
+        - api_key: []
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Traveloka Hotel Ranking Add new user
+      operationId: "addUser"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        "400":
+          description: "Missing required fields"
+  /users/{id}:
+    get:
+      summary: Traveloka Hotel Ranking Get all Users
+      operationId: traveloka-getUser
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users/{id}
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+          maximum: 10.0
+          minimum: 1.0
+          format: "int64"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "Invalid ID User"
+        "404":
+          description: "User not found"
+    put:
+      summary: Traveloka Hotel Ranking Update User
+      operationId: "updateUser"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+    delete:
+      summary: Traveloka Hotel Ranking Delete User
+      operationId: "deleteUser"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+      responses:
+        "400":
+          description: "Invalid ID User"
+        "404":
+          description: "User not found"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+definitions:
+  User:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+    xml:
+      name: "User"
