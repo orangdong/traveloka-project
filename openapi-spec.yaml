@@ -15,7 +15,7 @@ paths:
       summary: Traveloka Hotel Ranking API
       operationId: traveloka-home
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
       responses:
         "200":
           description: OK
@@ -47,7 +47,7 @@ paths:
       summary: Traveloka Hotel Ranking Get all Users
       operationId: traveloka-getUser
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -72,7 +72,7 @@ paths:
       summary: Traveloka Hotel Ranking Update User
       operationId: "traveloka-updateUser"
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -97,7 +97,7 @@ paths:
       summary: Traveloka Hotel Ranking Delete User
       operationId: "traveloka-deleteUser"
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -161,7 +161,7 @@ paths:
       summary: Traveloka Hotel Ranking Get Hotel by ID
       operationId: traveloka-getHotelById
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -184,7 +184,7 @@ paths:
       summary: Traveloka Hotel Ranking Get Hotel Review by ID Hotel
       operationId: traveloka-getHotelReviewsByIdHotel
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -237,7 +237,7 @@ paths:
       summary: Traveloka Hotel Ranking Get Review by ID
       operationId: traveloka-getReviewById
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
@@ -259,7 +259,7 @@ paths:
       summary: Traveloka Hotel Ranking Delete User
       operationId: "traveloka-deleteReview"
       x-google-backend:
-        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app
         path_translation: APPEND_PATH_TO_ADDRESS
       parameters:
         - name: "id"
