@@ -13,6 +13,7 @@ datasource db {
 model User {
   @@map("users")
   id          String @id @default(cuid())
+  firebaseId  String? @unique
   name        String
   username    String @unique
   city        String
@@ -32,46 +33,48 @@ model Hotel {
   longitude   Float
   type        String
   image       String? @db.Text
+  price       Int? @default(0)
+  stars       Int? @default(0)
   description String @db.Text
   reviews               Review[]
-  hotel_facilities      HotelFacility[]
-  point_of_interests    PointOfInterest[]
-  room_facilities       RoomFacility[]
+  hotelFacilities      HotelFacility[]
+  pointOfInterests    PointOfInterest[]
+  roomFacilities       RoomFacility[]
 }
 
 model PointOfInterest {
   @@map("point_of_interests")
   id          Int @id @default(autoincrement()) 
-  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
-  hotel_id    String
+  hotel       Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  hotelId    String
   interest    String
 }
 
 model RoomFacility {
   @@map("room_facilities")
   id          Int @id @default(autoincrement())
-  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
-  hotel_id    String
+  hotel       Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  hotelId    String
   facility    String
 }
 
 model HotelFacility {
   @@map("hotel_facilities")
   id          Int @id @default(autoincrement())
-  hotel       Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
-  hotel_id    String
+  hotel       Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  hotelId    String
   facility    String
 }
 
 model Review {
   @@map("reviews")
   id           String @id @default(cuid())
-  user         User @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  user_id      String
-  hotel        Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
-  hotel_id     String
+  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  hotel        Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  hotelId     String
   rating       Int @default(1)
   comment      String? @db.Text
 
-  @@unique([hotel_id, user_id])
+  @@unique([hotelId, userId])
 }
