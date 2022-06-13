@@ -176,4 +176,27 @@ const showReviews = async (req,res) =>{
     });
 }
 
-export { index, show, update, destroy, store, indexReviews, showReviews };
+const getCurrentUser = async (req,res) =>{
+    const userId = req.user.user_id;
+
+    const user = await prisma.user.findUnique({
+        where: {
+          firebaseId: userId,
+        },
+    })
+
+    if(!user) { 
+        return res.status(404).json({
+            status: 'error',
+            message: 'User not found'
+        })
+    }
+
+    return res.json({
+        status: 'success',
+        message: null,
+        data: user
+    });
+}
+
+export { index, show, update, destroy, store, indexReviews, showReviews, getCurrentUser };
