@@ -15,7 +15,6 @@ model User {
   id          String @id @default(cuid())
   firebaseId  String? @unique
   name        String
-  username    String @unique
   city        String
   state       String
   reviews     Review[]
