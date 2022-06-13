@@ -19,6 +19,15 @@ paths:
       responses:
         "200":
           description: OK
+  /users/me:
+    get:
+      summary: Get User By Token
+      operationId: getCurrentUser
+      x-google-backend:
+        address: https://traveloka-hotel-bbfcamhapq-as.a.run.app/users/me
+      responses:
+        "200":
+          description: OK
   /users:
     get:
       summary: Traveloka Hotel Ranking Get all Users
