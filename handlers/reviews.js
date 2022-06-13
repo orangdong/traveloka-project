@@ -37,9 +37,9 @@ const show = async (req, res) => {
 }
 
 const store = async (req, res) => {
-    const {user_id, hotel_id, rating, comment} = req.body;
+    const {userId, hotelId, rating, comment} = req.body;
 
-    if(!user_id || !hotel_id || !rating || comment) {
+    if(!userId || !hotelId || !rating || comment) {
         return res.status(400).json({
             status: 'error',
             message: 'Missing required fields'
@@ -48,8 +48,8 @@ const store = async (req, res) => {
 
     const review = await prisma.review.create({
         data: {
-            user_id,
-            hotel_id,
+            userId,
+            hotelId,
             rating,
             comment
         }

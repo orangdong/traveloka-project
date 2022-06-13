@@ -9,9 +9,9 @@ const index = async (req, res) => {
     if (!req.query.offset || !req.query.limit){
         hotels = await prisma.hotel.findMany({
             include: {
-                hotel_facilities: true,
-                point_of_interests: true,
-                room_facilities: true,
+                hotelFacilities: true,
+                pointOfInterests: true,
+                roomFacilities: true,
             },
         });
         
@@ -21,9 +21,9 @@ const index = async (req, res) => {
             skip: Number(req.query.offset),
             take: Number(req.query.limit),
             include: {
-                hotel_facilities: true,
-                point_of_interests: true,
-                room_facilities: true,
+                hotelFacilities: true,
+                pointOfInterests: true,
+                roomFacilities: true,
             },
         });
         
@@ -42,9 +42,9 @@ const show = async (req, res) => {
         where:{
             id
         },include: {
-          hotel_facilities: true,
-          point_of_interests: true,
-          room_facilities: true,
+          hotelFacilities: true,
+          pointOfInterests: true,
+          roomFacilities: true,
         },
     });
 
@@ -83,7 +83,7 @@ const hotelReview = async (req,res) =>{
 
     const hotelReview = await prisma.review.findMany({
         where: {
-            hotel_id: {
+            hotelId: {
                 equals: id
             }
         }
