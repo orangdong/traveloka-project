@@ -6,7 +6,7 @@ import error from 'http-errors';
 import usersRoutes from './routes/users.js';
 import hotelsRoutes from './routes/hotels.js';
 import reviewsRoutes from './routes/reviews.js';
-import checkToken from './middleware/check-token.js';
+import checkToken from './middlewares/check-token.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
