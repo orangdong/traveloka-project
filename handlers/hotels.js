@@ -14,7 +14,7 @@ const index = async (req, res) => {
     })
 
     const recommendations = await collabModel(user.id);
-    console.log(recommendations);
+    console.log(Array.isArray(recommendations));
     const prismaOptions = {
         include: {
             hotelFacilities: true,
@@ -23,7 +23,7 @@ const index = async (req, res) => {
         },
         where: {
             id: {
-                in: recommendations,
+                in: ["H001000","H001231","H001041","H001255","H000120","H000840"],
             },
         },
     }
