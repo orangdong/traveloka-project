@@ -12,6 +12,14 @@ const index = async (req, res) => {
           firebaseId: userId,
         },
     })
+    
+    if(!user){
+        return res.status(404).json({
+            status: 'error',
+            message: 'user not found'
+        });
+    }
+            
 
     const recommendations = await collabModel(user.id);
     
