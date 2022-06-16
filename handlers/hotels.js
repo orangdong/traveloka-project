@@ -24,7 +24,8 @@ const index = async (req, res) => {
     }
 
     if(req.query.search) {
-        prismaOptions.where.OR = [
+        prismaOptions.where = {
+            OR: [
             {
                 name: {
                     contains: req.query.search,
@@ -36,6 +37,7 @@ const index = async (req, res) => {
                 },
             },
         ]
+    }
     }
 
     const hotels = await prisma.hotel.findMany(prismaOptions);
