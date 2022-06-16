@@ -14,6 +14,7 @@ const index = async (req, res) => {
     })
 
     const recommendations = await collabModel(user.id);
+    console.log(recommendations);
     const prismaOptions = {
         include: {
             hotelFacilities: true,
