@@ -14,17 +14,12 @@ const index = async (req, res) => {
     })
 
     const recommendations = await collabModel(user.id);
-    console.log(Array.isArray(recommendations));
+    
     const prismaOptions = {
         include: {
             hotelFacilities: true,
             pointOfInterests: true,
             roomFacilities: true,
-        },
-        where: {
-            id: {
-                in: ["H001000","H001231","H001041","H001255","H000120","H000840"],
-            },
         },
     }
 
@@ -51,10 +46,19 @@ const index = async (req, res) => {
 
     const hotels = await prisma.hotel.findMany(prismaOptions);
     
+    const sorted = [];
+    recommendations.forEach((recommendation) => {
+        hotels.forEach((hotel) => {
+            if(recommendation === hotel.id){
+                sorted.push(hotel)
+            }
+        })
+    })
+
     return res.json({
         status: 'success',
         message: null,
-        data: hotels
+        data: sorted
     });
 }
 
