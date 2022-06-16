@@ -18,8 +18,7 @@ const index = async (req, res) => {
             status: 'error',
             message: 'user not found'
         });
-    }
-            
+    }       
 
     const recommendations = await collabModel(user.id);
     
@@ -50,14 +49,9 @@ const index = async (req, res) => {
 
     const hotels = await prisma.hotel.findMany(prismaOptions);
     
-    const sorted = [];
-    recommendations.forEach((recommendation) => {
-        hotels.forEach((hotel) => {
-            if(recommendation === hotel.id){
-                sorted.push(hotel)
-            }
-        })
-    })
+    const sorted = hotels.sort((a,b) => {
+        return recommendations.indexOf(a.id) - recommendations.indexOf(b.id)
+    });
 
     if(req.query.limit) {
         sorted.splice(req.query.limit)
