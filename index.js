@@ -26,9 +26,9 @@ app.get('/', async (req, res) => {
 // User Routes
 app.use('/users', checkToken, usersRoutes);
 // Hotel Routes
-app.use('/hotels', hotelsRoutes);
+app.use('/hotels', checkToken, hotelsRoutes);
 // Review Routes
-app.use('/reviews', reviewsRoutes);
+app.use('/reviews', checkToken, reviewsRoutes);
 
 
 app.use((req, res, next) => {

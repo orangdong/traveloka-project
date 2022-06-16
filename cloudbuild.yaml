@@ -17,6 +17,6 @@ steps:
             'asia-southeast1',
             '--platform',
             'managed',
-            '--allow-unauthenticated']
+            '--no-allow-unauthenticated']
 images:
 - 'gcr.io/$PROJECT_ID/traveloka-hotel:$SHORT_SHA'
