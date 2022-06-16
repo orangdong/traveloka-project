@@ -23,12 +23,6 @@ const index = async (req, res) => {
         },
     }
 
-    if(req.query.limit) {
-        prismaOptions.take = Number(req.query.limit);
-    }
-    if(req.query.offset) {
-        prismaOptions.skip = Number(req.query.offset);
-    }
     if(req.query.search) {
         prismaOptions.where.OR = [
             {
@@ -54,6 +48,10 @@ const index = async (req, res) => {
             }
         })
     })
+
+    if(req.query.limit) {
+        sorted.splice(req.query.limit)
+    }
 
     return res.json({
         status: 'success',
