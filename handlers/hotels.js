@@ -1,33 +1,55 @@
 import pkg from '@prisma/client';
-import e from 'express';
 const { PrismaClient } = pkg;
+import { collabModel } from '../services/recommendation.js';
 
 const prisma = new PrismaClient();
 
 const index = async (req, res) => {
-    var hotels
-    if (!req.query.offset || !req.query.limit){
-        hotels = await prisma.hotel.findMany({
-            include: {
-                hotelFacilities: true,
-                pointOfInterests: true,
-                roomFacilities: true,
-            },
-        });
-        
+    const userId = req.user.user_id;
 
-    }else{
-        hotels = await prisma.hotel.findMany({
-            skip: Number(req.query.offset),
-            take: Number(req.query.limit),
-            include: {
-                hotelFacilities: true,
-                pointOfInterests: true,
-                roomFacilities: true,
+    const user = await prisma.user.findUnique({
+        where: {
+          firebaseId: userId,
+        },
+    })
+
+    const recommendations = await collabModel(user.id);
+    const prismaOptions = {
+        include: {
+            hotelFacilities: true,
+            pointOfInterests: true,
+            roomFacilities: true,
+        },
+        where: {
+            id: {
+                in: recommendations,
             },
-        });
-        
+        },
     }
+
+    if(req.query.limit) {
+        prismaOptions.take = Number(req.query.limit);
+    }
+    if(req.query.offset) {
+        prismaOptions.skip = Number(req.query.offset);
+    }
+    if(req.query.search) {
+        prismaOptions.where.OR = [
+            {
+                name: {
+                    contains: req.query.search,
+                },
+            },
+            {
+                city: {
+                    contains: req.query.search,
+                },
+            },
+        ]
+    }
+
+    const hotels = await prisma.hotel.findMany(prismaOptions);
+    
     return res.json({
         status: 'success',
         message: null,
