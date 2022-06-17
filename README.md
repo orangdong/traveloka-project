@@ -42,7 +42,7 @@ _Below is an example of how you can instruct your audience on installing and set
 ## API endpoints
 Base URL : http://localhost:5000
 
-Deployment URL : https://traveloka-cloud-run-api-gateway-8q20i5np.ue.gateway.dev
+Deployment URL : https://traveloka-cloud-run-api-gateway-8q20i5np.ue.gateway.dev (Using JWT Token)
 
 Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/malikilamalik/workspace/public-api/collection/21127042-17b016b5-1d7a-4e5a-8c6d-ce18f733c520?ctx=documentation)
