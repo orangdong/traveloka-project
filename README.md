@@ -35,13 +35,7 @@ _Below is an example of how you can instruct your audience on installing and set
    npx prisma migrate dev --name init
    ```
 
-5. Run prisma seeder
-
-    ```sh
-    npx prisma db seed
-    ```
-
-6. Run the server
+5. Run the server
     ```sh
     npm run dev
     ```
@@ -75,51 +69,20 @@ Response
   "status": "success",
   "message": null,
   "data": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@email.com",
-      "phone": "+55 11 99999-9999",
-      "image": "https://avatars2.githubusercontent.com/u/174825?s=460&v=4",
-      "created_at": "2022-05-12T10:36:11.026Z",
-      "updated_at": "2022-05-12T10:36:11.026Z"
-    },
-    {
-      "id": 2,
-      "name": "Jane Doe",
-      "email": "jane@email.com",
-      "phone": "+55 11 99999-9999",
-      "image": "https://avatars2.githubusercontent.com/u/174821?s=460&v=4",
-      "created_at": "2022-05-12T10:36:11.032Z",
-      "updated_at": "2022-05-12T10:36:11.032Z"
-    },
-    {
-      "id": 3,
-      "name": "John Smith",
-      "email": "johnsmith@email.com",
-      "phone": "+55 11 99999-9999",
-      "image": "https://avatars2.githubusercontent.com/u/174822?s=460&v=4",
-      "created_at": "2022-05-12T10:36:11.038Z",
-      "updated_at": "2022-05-12T10:36:11.038Z"
-    },
-    {
-      "id": 4,
-      "name": "Jane Smith",
-      "email": "janesmith@email.com",
-      "phone": "+55 11 99999-9999",
-      "image": "https://avatars2.githubusercontent.com/u/174823?s=460&v=4",
-      "created_at": "2022-05-12T10:36:11.044Z",
-      "updated_at": "2022-05-12T10:36:11.044Z"
-    },
-    {
-      "id": 5,
-      "name": "John Bob",
-      "email": "johnbob@email.com",
-      "phone": "+55 11 99999-9999",
-      "image": "https://avatars2.githubusercontent.com/u/174824?s=460&v=4",
-      "created_at": "2022-05-12T10:36:11.048Z",
-      "updated_at": "2022-05-12T10:36:11.048Z"
-    }
+        {
+            "id": "U000001",
+            "firebaseId": "TJEkkFIioQZJNqzqBAqsF0B9hpC3",
+            "name": "tatsurok2018",
+            "city": "San Jose",
+            "state": "UnitedStates"
+        },
+        {
+            "id": "U000002",
+            "firebaseId": "C5fCymsFSzQMLsUbuRzsONVN4lF2",
+            "name": "STEPHEN N",
+            "city": "San Francisco",
+            "state": "CA"
+        }
   ]
 }
 ```
@@ -134,14 +97,12 @@ Response
   "status": "success",
   "message": null,
   "data": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john@email.com",
-    "phone": "+55 11 99999-9999",
-    "image": "https://avatars2.githubusercontent.com/u/174825?s=460&v=4",
-    "created_at": "2022-05-12T10:36:11.026Z",
-    "updated_at": "2022-05-12T10:36:11.026Z"
-  }
+            "id": "U000001",
+            "firebaseId": "TJEkkFIioQZJNqzqBAqsF0B9hpC3",
+            "name": "tatsurok2018",
+            "city": "San Jose",
+            "state": "UnitedStates"
+    }
 }
 ```
 
@@ -168,64 +129,36 @@ Response
     "message": "success get review",
     "data": [
         {
-            "id": 1,
-            "name": "John Doe",
-            "email": "john@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174825?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.026Z",
-            "updated_at": "2022-05-12T10:36:11.026Z",
+            "id": "U000001",
+            "firebaseId": "TJEkkFIioQZJNqzqBAqsF0B9hpC3",
+            "name": "tatsurok2018",
+            "city": "San Jose",
+            "state": "UnitedStates",
             "reviews": [
                 {
-                    "id": 1,
-                    "user_id": 1,
-                    "hotel_id": 1,
-                    "rating": 1,
-                    "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-                    "created_at": "2022-05-12T10:36:11.057Z",
-                    "updated_at": "2022-05-12T10:36:11.057Z"
+                    "id": "R000001",
+                    "userId": "U000001",
+                    "hotelId": "H000021",
+                    "rating": 3,
+                    "comment": "This hotel was nice and quiet. Did not know, there was train track near by. But it was only few train passed during our stay. Best Western changed hotel classification. The Plus category are not the same as before."
                 }
             ]
         },
         {
-            "id": 2,
-            "name": "Jane Doe",
-            "email": "jane@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174821?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.032Z",
-            "updated_at": "2022-05-12T10:36:11.032Z",
-            "reviews": []
-        },
-        {
-            "id": 3,
-            "name": "John Smith",
-            "email": "johnsmith@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174822?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.038Z",
-            "updated_at": "2022-05-12T10:36:11.038Z",
-            "reviews": []
-        },
-        {
-            "id": 4,
-            "name": "Jane Smith",
-            "email": "janesmith@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174823?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.044Z",
-            "updated_at": "2022-05-12T10:36:11.044Z",
-            "reviews": []
-        },
-        {
-            "id": 5,
-            "name": "John Bob",
-            "email": "johnbob@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174824?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.048Z",
-            "updated_at": "2022-05-12T10:36:11.048Z",
-            "reviews": []
+            "id": "U000002",
+            "firebaseId": "C5fCymsFSzQMLsUbuRzsONVN4lF2",
+            "name": "STEPHEN N",
+            "city": "San Francisco",
+            "state": "CA",
+            "reviews": [
+                {
+                    "id": "R000002",
+                    "userId": "U000002",
+                    "hotelId": "H001054",
+                    "rating": 4,
+                    "comment": "We stayed in the king suite with the separation between the bedroom and the living space. The sofa bed wasn't very good I had back discomfort by the day we left on our three night stay. The room is clean, and the king bed very comfortable. This hotel is located within walking distance to most places you will want to... More"
+                }
+            ]
         }
     ]
 }
@@ -240,28 +173,41 @@ Response
 {
     "status": "success",
     "message": "success get review",
-    "data": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "email": "john@email.com",
-            "phone": "+55 11 99999-9999",
-            "image": "https://avatars2.githubusercontent.com/u/174825?s=460&v=4",
-            "created_at": "2022-05-12T10:36:11.026Z",
-            "updated_at": "2022-05-12T10:36:11.026Z",
+    "data": {
+            "id": "U000001",
+            "firebaseId": "TJEkkFIioQZJNqzqBAqsF0B9hpC3",
+            "name": "tatsurok2018",
+            "city": "San Jose",
+            "state": "UnitedStates",
             "reviews": [
                 {
-                    "id": 1,
-                    "user_id": 1,
-                    "hotel_id": 1,
-                    "rating": 1,
-                    "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-                    "created_at": "2022-05-12T10:36:11.057Z",
-                    "updated_at": "2022-05-12T10:36:11.057Z"
+                    "id": "R000001",
+                    "userId": "U000001",
+                    "hotelId": "H000021",
+                    "rating": 3,
+                    "comment": "This hotel was nice and quiet. Did not know, there was train track near by. But it was only few train passed during our stay. Best Western changed hotel classification. The Plus category are not the same as before."
                 }
             ]
-        }
-    ]
+    }
+}
+```
+
+Usage
+```sh
+curl -X GET http://localhost:5000/users/me
+```
+Response
+```json
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "id": "U000001",
+        "firebaseId": "TJEkkFIioQZJNqzqBAqsF0B9hpC3",
+        "name": "tatsurok2018",
+        "city": "San Jose",
+        "state": "UnitedStates"
+    }
 }
 ```
 
@@ -269,7 +215,7 @@ Response
 | Endpoint | Description | Parameter | Method|
 | ------ | ------ | ------ | ------ |
 | [/hotels](http://localhost:5000/hotels) | Get All Hotels | - | GET |
-| [/hotels?limit=1&offset=1](http://localhost:5000/hotels) | Get All Hotels with offset and limit | offset, limit | GET |
+| [/hotels?limit=1&search=bardstown](http://localhost:5000/hotels) | Get All Hotels with offset and limit | search, limit | GET |
 | [/hotels/:id](http://localhost:5000/hotels/1) | Get Hotel by Id | id | GET |
 | [/hotels/:id/reviews](http://localhost:5000/hotels/1/reviews) | Get All Reviews by Spesific Hotel Id | id | GET |
 | [/hotels/reviews](http://localhost:5000/hotels/reviews) | Get All Hotels and Reviews | - | GET |
@@ -285,14 +231,35 @@ Response
     "message": null,
     "data": [
         {
-            "id": 1,
-            "name": "InterContinental Hotel Dago Pakar Bandung",
-            "address": "Jalan Resor Dago Pakar Raya 2B Resor Dago Pakar, Mekarsaluyu, Kec. Cimenyan, Kota Bandung, Jawa Barat 40198, Indonesia",
-            "image": "https://ak-d.tripcdn.com/images/220r0u000000j8qbf8514_Z_1080_808_R5_D.jpg",
-            "description": "Hotel Bintang 5 di Bandung",
-            "created_at": "2022-05-12T10:36:11.051Z",
-            "updated_at": "2022-05-12T10:36:11.051Z"
-        }
+            "id": "H001000",
+            "name": "Bardstown Parkview Motel",
+            "address": "418 E Stephen Foster Ave",
+            "city": "Bardstown",
+            "state": "KY",
+            "country": "US",
+            "latitude": 37.8,
+            "longitude": -85.5,
+            "type": "Hotel",
+            "image": "https://raw.githubusercontent.com/zulfauzi92/Hotel_Recomendation_Model_Traveloka/main/Hotel%20Images/image%201000.jpg",
+            "price": 260000,
+            "stars": 0,
+            "description": "The standard check-in time is 12:00 PM and the standard check-out time is 11:00 AM. Early check-in or late check-out is strictly subjected to availability and may be chargeable by the hotel. Any early check-in or late check-out request must be directed and reconfirmed with hotel directly Hotel may charge gala dinner supplement on Christmas / New Years eve or other festive periods which need to be paid directly at the hotel.As per the govt guidelines valid govt issued id proofs are required to be presented at the Time of C/in.",
+            "hotelFacilities": [
+                {
+                    "id": 17515,
+                    "hotelId": "H001000",
+                    "facility": "Baggage Room"
+                }
+            ],
+            "pointOfInterests": [],
+            "roomFacilities": [
+                {
+                    "id": 14011,
+                    "hotelId": "H001000",
+                    "facility": "Air Conditioning"
+                }
+            ]
+        },
     ]
 }
 ```
@@ -308,13 +275,34 @@ Response
     "status": "success",
     "message": "Show Route id: 1",
     "data": {
-        "id": 1,
-        "name": "InterContinental Hotel Dago Pakar Bandung",
-        "address": "Jalan Resor Dago Pakar Raya 2B Resor Dago Pakar, Mekarsaluyu, Kec. Cimenyan, Kota Bandung, Jawa Barat 40198, Indonesia",
-        "image": "https://ak-d.tripcdn.com/images/220r0u000000j8qbf8514_Z_1080_808_R5_D.jpg",
-        "description": "Hotel Bintang 5 di Bandung",
-        "created_at": "2022-05-12T10:36:11.051Z",
-        "updated_at": "2022-05-12T10:36:11.051Z"
+            "id": "H001000",
+            "name": "Bardstown Parkview Motel",
+            "address": "418 E Stephen Foster Ave",
+            "city": "Bardstown",
+            "state": "KY",
+            "country": "US",
+            "latitude": 37.8,
+            "longitude": -85.5,
+            "type": "Hotel",
+            "image": "https://raw.githubusercontent.com/zulfauzi92/Hotel_Recomendation_Model_Traveloka/main/Hotel%20Images/image%201000.jpg",
+            "price": 260000,
+            "stars": 0,
+            "description": "The standard check-in time is 12:00 PM and the standard check-out time is 11:00 AM. Early check-in or late check-out is strictly subjected to availability and may be chargeable by the hotel. Any early check-in or late check-out request must be directed and reconfirmed with hotel directly Hotel may charge gala dinner supplement on Christmas / New Years eve or other festive periods which need to be paid directly at the hotel.As per the govt guidelines valid govt issued id proofs are required to be presented at the Time of C/in.",
+            "hotelFacilities": [
+                {
+                    "id": 17515,
+                    "hotelId": "H001000",
+                    "facility": "Baggage Room"
+                }
+            ],
+            "pointOfInterests": [],
+            "roomFacilities": [
+                {
+                    "id": 14011,
+                    "hotelId": "H001000",
+                    "facility": "Air Conditioning"
+                }
+            ]
     }
 }
 ```
@@ -330,22 +318,47 @@ Response
     "message": "success get review",
     "data": [
         {
-            "id": 1,
-            "name": "InterContinental Hotel Dago Pakar Bandung",
-            "address": "Jalan Resor Dago Pakar Raya 2B Resor Dago Pakar, Mekarsaluyu, Kec. Cimenyan, Kota Bandung, Jawa Barat 40198, Indonesia",
-            "image": "https://ak-d.tripcdn.com/images/220r0u000000j8qbf8514_Z_1080_808_R5_D.jpg",
-            "description": "Hotel Bintang 5 di Bandung",
-            "created_at": "2022-05-12T10:36:11.051Z",
-            "updated_at": "2022-05-12T10:36:11.051Z",
+            "id": "H001000",
+            "name": "Bardstown Parkview Motel",
+            "address": "418 E Stephen Foster Ave",
+            "city": "Bardstown",
+            "state": "KY",
+            "country": "US",
+            "latitude": 37.8,
+            "longitude": -85.5,
+            "type": "Hotel",
+            "image": "https://raw.githubusercontent.com/zulfauzi92/Hotel_Recomendation_Model_Traveloka/main/Hotel%20Images/image%201000.jpg",
+            "price": 260000,
+            "stars": 0,
+            "description": "The standard check-in time is 12:00 PM and the standard check-out time is 11:00 AM. Early check-in or late check-out is strictly subjected to availability and may be chargeable by the hotel. Any early check-in or late check-out request must be directed and reconfirmed with hotel directly Hotel may charge gala dinner supplement on Christmas / New Years eve or other festive periods which need to be paid directly at the hotel.As per the govt guidelines valid govt issued id proofs are required to be presented at the Time of C/in.",
             "reviews": [
                 {
-                    "id": 1,
-                    "user_id": 1,
-                    "hotel_id": 1,
-                    "rating": 1,
-                    "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-                    "created_at": "2022-05-12T10:36:11.057Z",
-                    "updated_at": "2022-05-12T10:36:11.057Z"
+                    "id": "R003765",
+                    "userId": "U003670",
+                    "hotelId": "H000001",
+                    "rating": 4,
+                    "comment": "The staff is polite and professional at all times. I love the fact that checkout is at noon. The free breakfast was delicious! The bed in the room was comfortable. There is a outdoor pool and a nice fitness center."
+                },
+                {
+                    "id": "R003766",
+                    "userId": "U003671",
+                    "hotelId": "H000001",
+                    "rating": 5,
+                    "comment": "This is a hidden Gem. We checked in on a Friday evening. Richard was at the front desk. Kind ,great smile and very friendly. Feels like you already knew him. Beautiful rooms, great breakfast spread in the mornings. I needed a bit of information on Saturday and Ms. Reagan was at the front desk. She greets everyone with a warm... More"
+                },
+                {
+                    "id": "R003767",
+                    "userId": "U003672",
+                    "hotelId": "H000001",
+                    "rating": 5,
+                    "comment": "This is a great hotel for short and long term stays. Staff are very friendly, Hotel is clean. Includes great breakfast, light dinner and beer and wine in the evening. The hotel shuttle is also very useful for taking to local malls and the airport."
+                },
+                {
+                    "id": "R003768",
+                    "userId": "U003673",
+                    "hotelId": "H000001",
+                    "rating": 4,
+                    "comment": "Very friendly staff, clean rooms, great for business travel the evening social and the breakfast eliminates the need to find somewhere to go for breakfast and dinner. Would like more security in parking lot."
                 }
             ]
         }
@@ -364,13 +377,32 @@ Response
     "message": "success get review",
     "data": [
         {
-            "id": 1,
-            "user_id": 1,
-            "hotel_id": 1,
-            "rating": 1,
-            "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-            "created_at": "2022-05-12T10:36:11.057Z",
-            "updated_at": "2022-05-12T10:36:11.057Z"
+            "id": "R003765",
+            "userId": "U003670",
+            "hotelId": "H000001",
+            "rating": 4,
+            "comment": "The staff is polite and professional at all times. I love the fact that checkout is at noon. The free breakfast was delicious! The bed in the room was comfortable. There is a outdoor pool and a nice fitness center."
+        },
+        {
+            "id": "R003766",
+            "userId": "U003671",
+            "hotelId": "H000001",
+            "rating": 5,
+            "comment": "This is a hidden Gem. We checked in on a Friday evening. Richard was at the front desk. Kind ,great smile and very friendly. Feels like you already knew him. Beautiful rooms, great breakfast spread in the mornings. I needed a bit of information on Saturday and Ms. Reagan was at the front desk. She greets everyone with a warm... More"
+        },
+        {
+            "id": "R003767",
+            "userId": "U003672",
+            "hotelId": "H000001",
+            "rating": 5,
+            "comment": "This is a great hotel for short and long term stays. Staff are very friendly, Hotel is clean. Includes great breakfast, light dinner and beer and wine in the evening. The hotel shuttle is also very useful for taking to local malls and the airport."
+        },
+        {
+            "id": "R003768",
+            "userId": "U003673",
+            "hotelId": "H000001",
+            "rating": 4,
+            "comment": "Very friendly staff, clean rooms, great for business travel the evening social and the breakfast eliminates the need to find somewhere to go for breakfast and dinner. Would like more security in parking lot."
         }
     ]
 }
@@ -396,13 +428,25 @@ Response
     "message": null,
     "data": [
         {
-            "id": 1,
-            "user_id": 1,
-            "hotel_id": 1,
-            "rating": 1,
-            "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-            "created_at": "2022-05-12T10:36:11.057Z",
-            "updated_at": "2022-05-12T10:36:11.057Z"
+            "id": "R000001",
+            "userId": "U000001",
+            "hotelId": "H000021",
+            "rating": 3,
+            "comment": "This hotel was nice and quiet. Did not know, there was train track near by. But it was only few train passed during our stay. Best Western changed hotel classification. The Plus category are not the same as before."
+        },
+        {
+            "id": "R000002",
+            "userId": "U000002",
+            "hotelId": "H001054",
+            "rating": 4,
+            "comment": "We stayed in the king suite with the separation between the bedroom and the living space. The sofa bed wasn't very good I had back discomfort by the day we left on our three night stay. The room is clean, and the king bed very comfortable. This hotel is located within walking distance to most places you will want to... More"
+        },
+        {
+            "id": "R000003",
+            "userId": "U000003",
+            "hotelId": "H001054",
+            "rating": 3,
+            "comment": "Parking was horrible, somebody ran into my rental car while staying there. I didn't get to try the breakfast, I was there for business so the restaurant opened to late for the business world to enjoy, I had to asked for coffee for my room, And the items in the vending machine were stale."
         }
     ]
 }
@@ -418,13 +462,11 @@ Response
     "status": "success",
     "message": "Show Route id: 1",
     "data": {
-        "id": 1,
-        "user_id": 1,
-        "hotel_id": 1,
-        "rating": 1,
-        "comment": "Makanannya tidak sesuai dengan selera saya, tidak ada pecel dan lalapan.",
-        "created_at": "2022-05-12T10:36:11.057Z",
-        "updated_at": "2022-05-12T10:36:11.057Z"
+        "id": "R000001",
+        "userId": "U000001",
+        "hotelId": "H000021",
+        "rating": 3,
+        "comment": "This hotel was nice and quiet. Did not know, there was train track near by. But it was only few train passed during our stay. Best Western changed hotel classification. The Plus category are not the same as before."
     }
 }
 ```
