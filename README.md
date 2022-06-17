@@ -48,6 +48,8 @@ _Below is an example of how you can instruct your audience on installing and set
 ## API endpoints
 Base URL : http://localhost:5000
 
+Deployment URL : https://traveloka-cloud-run-api-gateway-8q20i5np.ue.gateway.dev
+
 Postman
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/malikilamalik/workspace/public-api/collection/21127042-17b016b5-1d7a-4e5a-8c6d-ce18f733c520?ctx=documentation)
 
@@ -61,6 +63,7 @@ Postman
 | [/users/:id](http://localhost:5000/users/1) | Delete User by Id | id | DELETE |
 | [/users/reviews](http://localhost:5000/users/reviews) | Get All Users and Reviews | - | GET |
 | [/users/:id/reviews](http://localhost:5000/users/1/reviews) | Get All Reviews by Spesific User Id | id | GET |
+| [/users/me](http://localhost:5000/users/me) | Get Current User Profile | - | GET |
 
 Usage
 ```sh
